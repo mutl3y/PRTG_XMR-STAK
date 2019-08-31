@@ -1,9 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
-#*.exe
-*.exe~
+*.exe
 *.dll
 *.so
 *.dylib
 *.test
 *.out
 /idea/
+PRTG_XMR-STAK.exe
