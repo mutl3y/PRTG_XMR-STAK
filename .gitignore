@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-*.exe
+#*.exe
 *.exe~
 *.dll
 *.so
