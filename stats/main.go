@@ -43,43 +43,6 @@ type stats struct {
 	connection `json:"connection"`
 }
 
-//
-//
-//// Map returns a map version of stats data for metrics.go
-//// non concurrent usage
-//func (stats *stats) Map() map[string]interface{} {
-//	if len(stats.Total) == 0 {
-//		stats.Total = []float64{0}
-//	}
-//	m := map[string]interface{}{
-//		"DiffCurrent": stats.DiffCurrent,
-//		"SharesGood":  stats.SharesGood,
-//		"SharesTotal": stats.SharesTotal,
-//		"AvgTime":     stats.AvgTime,
-//		"HashesTotal": stats.HashesTotal,
-//		"Pool":        stats.Pool,
-//		"Uptime":      stats.Uptime,
-//		"Ping":        stats.Ping,
-//		"TotalHR":     stats.Total[0],
-//	}
-//
-//	for k, v := range stats.Threads {
-//		m[fmt.Sprintf("Thread.%v", k)] = v[0]
-//	}
-//	return m
-//}
-//
-//// Map returns a map version of stats data for metrics.go
-//// non concurrent usage
-//func (stats *stats) threadMapSlice() []map[string]interface{} {
-//	ms := make([]map[string]interface{}, 0, 10)
-//	for k, v := range stats.Threads {
-//		ms = append(ms, map[string]interface{}{"hashrate": v[0], "thread": k})
-//
-//	}
-//	return ms
-//}
-
 func getStats(timeout time.Duration, url string) (stats, error) {
 	client := http.Client{
 		Timeout: timeout,
@@ -152,7 +115,7 @@ func PrtgStats(timeout time.Duration, url string) {
 	})
 
 	r.AddChannel(prtg.SensorChannel{
-		Name:      "Ping Pool",
+		Name:      "Pool Ping",
 		Value:     float64(s.connection.Ping),
 		ShowChart: show,
 		ShowTable: show,
@@ -176,7 +139,7 @@ func PrtgStats(timeout time.Duration, url string) {
 		Unit:      prtg.UnitTimeSeconds,
 	})
 	r.AddChannel(prtg.SensorChannel{
-		Name:      "SharesTotal",
+		Name:      "Shares Total",
 		Value:     float64(s.SharesTotal),
 		ShowChart: show,
 		ShowTable: show,
