@@ -17,6 +17,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/mutl3y/PRTG_XMR-STAK/stats"
 
 	"github.com/spf13/cobra"
 )
@@ -27,7 +28,23 @@ var threadsCmd = &cobra.Command{
 	Short: "thread hashrate info",
 	Long:  `detailed hashrate info including threads`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("not yet implemented")
+		flags := cmd.Flags()
+		h, err := flags.GetString("host")
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		p, err := flags.GetInt("port")
+		if err != nil {
+			fmt.Println(err)
+
+		}
+		t, err := flags.GetDuration("timeout")
+		if err != nil {
+			fmt.Println(err)
+		}
+		url := fmt.Sprintf("http://%v:%v/Api.json", h, p)
+		stats.PrtgStats(t, url, true)
 	},
 }
 

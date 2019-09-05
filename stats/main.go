@@ -70,7 +70,7 @@ func getStats(timeout time.Duration, url string) (stats, error) {
 	return out, nil
 }
 
-func PrtgStats(timeout time.Duration, url string) {
+func PrtgStats(timeout time.Duration, url string, threads bool) {
 	show := new(int)
 	*show = 1
 	// Create empty response and log start time
@@ -171,5 +171,18 @@ func PrtgStats(timeout time.Duration, url string) {
 		Unit:      prtg.UnitCount,
 	})
 
+	if threads {
+
+		for i, v := range s.Threads {
+			r.AddChannel(prtg.SensorChannel{
+				Name:      fmt.Sprintf("Thread_%v", i),
+				Value:     v[0],
+				Float:     1,
+				ShowChart: show,
+				ShowTable: show,
+				Unit:      prtg.UnitCount,
+			})
+		}
+	}
 	fmt.Println(r.String())
 }

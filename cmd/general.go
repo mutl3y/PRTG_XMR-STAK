@@ -16,8 +16,8 @@ limitations under the License.
 package cmd
 
 import (
-	"../stats"
 	"fmt"
+	"github.com/mutl3y/PRTG_XMR-STAK/stats"
 
 	"github.com/spf13/cobra"
 )
@@ -52,7 +52,7 @@ PRTG_XMR-STAK.exe Stats -T 500ms -H 192.168.1.201 -P 420
 			fmt.Println(err)
 		}
 		url := fmt.Sprintf("http://%v:%v/Api.json", h, p)
-		stats.PrtgStats(t, url)
+		stats.PrtgStats(t, url, false)
 	},
 }
 

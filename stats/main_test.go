@@ -64,7 +64,7 @@ func Test_PrtgStats(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			PrtgStats(tt.args.timeOut, tt.args.url)
+			PrtgStats(tt.args.timeOut, tt.args.url, false)
 		})
 	}
 }

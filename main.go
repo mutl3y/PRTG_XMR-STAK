@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "./cmd"
+import "github.com/mutl3y/PRTG_XMR-STAK/cmd"
 
 func main() {
 	cmd.Execute()
