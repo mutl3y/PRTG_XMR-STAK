@@ -26,20 +26,19 @@ not in a rush drop me a request
 
 C:\PRTG_XMR-STAK.exe -h
 
-PRTG Sensor for XMR-STAK
+Examples
+PRTG_XMR-STAK.exe Stats -T 500ms -H 192.168.1.201 -P 420
+
+./PRTG_XMR-STAK Stats -T 500ms -H 192.168.1.201 -P 420
 
 Usage:
-  PRTG_XMR-STAK [command]
-
-Available Commands:
-  Stats       General stats
-  help        Help about any command
-  threads     thread hashrate info
+  PRTG_XMR-STAK [flags]
 
 Flags:
   -h, --help               help for PRTG_XMR-STAK
   -H, --host string        hostname / IP (default "127.0.0.1")
   -P, --port int           port (default 420)
+  -t, --threads            include thread info
   -T, --timeout duration   timeout string eg 500ms (default 500ms)
 
 Use "PRTG_XMR-STAK [command] --help" for more information about a command.

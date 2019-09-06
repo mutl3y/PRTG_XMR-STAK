@@ -17,6 +17,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/mutl3y/PRTG_XMR-STAK/stats"
 	"github.com/spf13/cobra"
 	"os"
 	"time"
@@ -27,10 +28,31 @@ var rootCmd = &cobra.Command{
 	Use:   "PRTG_XMR-STAK",
 	Short: "PRTG Sensor for XMR-STAK",
 	Long: `
-PRTG Sensor for XMR-STAK`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	//Run: func(cmd *cobra.Command, args []string) {},
+Examples
+PRTG_XMR-STAK.exe Stats -T 500ms -H 192.168.1.201 -P 420
+
+./PRTG_XMR-STAK Stats -T 500ms -H 192.168.1.201 -P 420
+`,
+	Run: func(cmd *cobra.Command, args []string) {
+		flags := cmd.Flags()
+		h, err := flags.GetString("host")
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		p, err := flags.GetInt("port")
+		if err != nil {
+			fmt.Println(err)
+
+		}
+		t, err := flags.GetDuration("timeout")
+		if err != nil {
+			fmt.Println(err)
+		}
+		th, err := flags.GetBool("threads")
+		url := fmt.Sprintf("http://%v:%v/Api.json", h, p)
+		stats.PrtgStats(t, url, th)
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -46,5 +68,5 @@ func init() {
 	rootCmd.PersistentFlags().StringP("host", "H", "127.0.0.1", "hostname / IP")
 	rootCmd.PersistentFlags().IntP("port", "P", 420, "port")
 	rootCmd.PersistentFlags().DurationP("timeout", "T", 500*time.Millisecond, "timeout string eg 500ms")
-
+	rootCmd.PersistentFlags().BoolP("threads", "t", false, "include thread info")
 }

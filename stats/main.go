@@ -153,13 +153,32 @@ func PrtgStats(timeout time.Duration, url string, threads bool) {
 		ShowTable: show,
 		Unit:      prtg.UnitCustom,
 	})
+
+	badShare := s.SharesTotal - s.SharesGood
 	r.AddChannel(prtg.SensorChannel{
 		Name:      "Bad Shares",
-		Value:     float64(s.SharesTotal - s.SharesGood),
+		Value:     float64(badShare),
 		Float:     1,
 		ShowChart: show,
 		ShowTable: show,
 		Unit:      prtg.UnitCustom,
+	})
+
+	var bShareP float64
+
+	if badShare <= 1 {
+		p1 := s.SharesTotal / 100
+		p := badShare / p1
+		bShareP = float64(p)
+	}
+
+	r.AddChannel(prtg.SensorChannel{
+		Name:      "Bad Share %",
+		Value:     bShareP,
+		Float:     1,
+		ShowChart: show,
+		ShowTable: show,
+		Unit:      prtg.UnitPercent,
 	})
 
 	r.AddChannel(prtg.SensorChannel{
@@ -172,7 +191,6 @@ func PrtgStats(timeout time.Duration, url string, threads bool) {
 	})
 
 	if threads {
-
 		for i, v := range s.Threads {
 			r.AddChannel(prtg.SensorChannel{
 				Name:      fmt.Sprintf("Thread_%v", i),
