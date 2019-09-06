@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="san">
+  <component name="PublishConfigData" serverName="san executable">
     <serverData>
       <paths name="san">
         <serverdata>
           <mappings>
             <mapping deploy="PRTG" local="$PROJECT_DIR$" web="/" />
           </mappings>
+        </serverdata>
+      </paths>
+      <paths name="san executable">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/releases" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/releases/PRTG_XMR-STAK-darwin-amd64" />
+            <excludedPath local="true" path="$PROJECT_DIR$/releases/PRTG_XMR-STAK-windows-386.exe" />
+            <excludedPath local="true" path="$PROJECT_DIR$/releases/PRTG_XMR-STAK-windows-amd64.exe" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

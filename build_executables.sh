@@ -26,3 +26,5 @@ do
         exit 1
     fi
 done
+
+cp releases/PRTG_XMR-STAK-windows-amd64.exe "/c/Program Files (x86)/PRTG Network Monitor/Custom Sensors/EXEXML/"

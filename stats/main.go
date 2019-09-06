@@ -168,8 +168,11 @@ func PrtgStats(timeout time.Duration, url string, threads bool) {
 
 	if badShare <= 1 {
 		p1 := s.SharesTotal / 100
-		p := badShare / p1
-		bShareP = float64(p)
+		if p1 != 0 {
+			p := badShare / p1
+			bShareP = float64(p)
+		}
+
 	}
 
 	r.AddChannel(prtg.SensorChannel{

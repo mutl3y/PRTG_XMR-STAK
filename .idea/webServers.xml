@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="5765300c-249f-460d-b33b-22aaf04ec365" name="san executable" url="http://192.168.0.29">
+        <fileTransfer host="192.168.0.29" port="22" rootFolder="/var/prtg/scriptsxml" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
