@@ -166,7 +166,7 @@ func PrtgStats(timeout time.Duration, url string, threads bool) {
 
 	var bShareP float64
 
-	if badShare <= 1 {
+	if badShare != 0 {
 		p1 := s.SharesTotal / 100
 		if p1 != 0 {
 			p := badShare / p1
