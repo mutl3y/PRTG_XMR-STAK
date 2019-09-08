@@ -15,21 +15,22 @@ This can also be compiled onto any Golang supported platform, Linux and windows 
 the release pages of Github
 
 To compile this yourself you need to...
-    1, install Golang
-    2, download or clone repo
-    3, run go get to download required packages
-    4, run go build
-    5, move the binary to the correct place
+-    1, install Golang
+-    2, download or clone repo
+-    3, run `go get` to download required packages
+-    4, run `go build`
+-    5, move the binary to the correct place
     
 There are likely to be other small steps here as things may vary on your systems, If you need a OS binary and 
 not in a rush drop me a request    
 
+```
 C:\PRTG_XMR-STAK.exe -h
 
 Examples
-PRTG_XMR-STAK.exe Stats -T 500ms -H 192.168.1.201 -P 420
+PRTG_XMR-STAK.exe -T 500ms -H 192.168.1.201 -P 420
 
-./PRTG_XMR-STAK Stats -T 500ms -H 192.168.1.201 -P 420
+./PRTG_XMR-STAK  -T 500ms -H 192.168.1.201 -P 420
 
 Usage:
   PRTG_XMR-STAK [flags]
@@ -43,6 +44,7 @@ Flags:
 
 Use "PRTG_XMR-STAK [command] --help" for more information about a command.
 subcommand is required
+```
 
 If you feel like saying thanks    
         XMR: 49QA139gTEVMDV9LrTbx3qGKKEoYJucCtT4t5oUHHWfPBQbKc4MdktXfKSeT1ggoYVQhVsZcPAMphRS8vu8oxTf769NDTMu
