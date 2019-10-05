@@ -88,7 +88,6 @@ func PrtgStats(timeout time.Duration, url string, threads bool) {
 
 	r.AddChannel(prtg.SensorChannel{
 		Name:      "Hash Rate",
-		ChannelID: show,
 		Value:     s.Total[0],
 		Float:     1,
 		ShowChart: show,
